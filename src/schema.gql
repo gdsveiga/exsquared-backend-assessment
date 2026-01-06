@@ -1,0 +1,39 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type MakeObject {
+  createdAt: DateTime!
+  id: Int!
+  makeId: Int!
+  makeName: String!
+  updatedAt: DateTime!
+  vehicleTypes: [VehicleTypeObject!]
+}
+
+type Query {
+  make(id: Int!): MakeObject
+  makeByMakeId(makeId: Int!): MakeObject
+  makes(skip: Int, take: Int): [MakeObject!]!
+  makesCount: Int!
+  searchMakes(name: String!, skip: Int, take: Int): [MakeObject!]!
+  searchVehicleTypes(name: String!, skip: Int, take: Int): [VehicleTypeObject!]!
+  vehicleType(id: Int!): VehicleTypeObject
+  vehicleTypes(skip: Int, take: Int): [VehicleTypeObject!]!
+  vehicleTypesByMakeId(makeId: Int!): [VehicleTypeObject!]!
+  vehicleTypesCount: Int!
+}
+
+type VehicleTypeObject {
+  createdAt: DateTime!
+  id: Int!
+  makeId: Int!
+  typeId: Int!
+  typeName: String!
+  updatedAt: DateTime!
+}
