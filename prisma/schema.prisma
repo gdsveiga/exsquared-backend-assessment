@@ -1,0 +1,32 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Make {
+  id           Int           @id @default(autoincrement())
+  makeId       Int           @unique
+  makeName     String
+  vehicleTypes VehicleType[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VehicleType {
+  id       Int    @id @default(autoincrement())
+  typeId   Int
+  typeName String
+  make     Make   @relation(fields: [makeId], references: [makeId])
+  makeId   Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([makeId, typeId])
+}
