@@ -463,11 +463,16 @@ async function main() {
   });
 }
 
-main()
-  .catch((e: unknown) => {
-    log('error', 'Fatal error during ingestion', {
-      error: e instanceof Error ? e.message : String(e),
-    });
-    process.exit(1);
-  })
-  .finally(() => void prisma.$disconnect());
+const isDirectExecution =
+  process.argv[1]?.endsWith('seed.ts') || process.argv[1]?.endsWith('seed.js');
+
+if (isDirectExecution) {
+  main()
+    .catch((e: unknown) => {
+      log('error', 'Fatal error during ingestion', {
+        error: e instanceof Error ? e.message : String(e),
+      });
+      process.exit(1);
+    })
+    .finally(() => void prisma.$disconnect());
+}
