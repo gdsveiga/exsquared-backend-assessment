@@ -37,7 +37,7 @@ pnpm run start:dev
 Create a `.env` file:
 
 ```
-DATABASE_URL=postgresql://postgres:postgres@localhost:5432/exquared
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/exsquared
 PORT=3000
 NODE_ENV=development
 LOG_LEVEL=info
@@ -82,6 +82,7 @@ Playground available in dev mode.
 ### Available Queries
 
 **Makes:**
+
 - `makes(skip, take)` - paginated list
 - `make(id)` - by internal ID
 - `makeByMakeId(makeId)` - by NHTSA ID
@@ -89,6 +90,7 @@ Playground available in dev mode.
 - `makesCount` - total count
 
 **Vehicle Types:**
+
 - `vehicleTypes(skip, take)` - paginated list
 - `vehicleType(id)` - by ID
 - `vehicleTypesByMakeId(makeId)` - all types for a make
